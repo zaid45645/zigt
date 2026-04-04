@@ -123,14 +123,14 @@ class Lexer:
         
 
 class number_node:
-    def __int__(self, tok):
+    def __init__(self, tok):
         self.tok = tok
     
     def __repr__(self):
         return f'{self.tok}'
 
 class bin0p_node:
-    def __int__(self, left_node, op_tok, right_node):
+    def __init__(self, left_node, op_tok, right_node):
         self.left_node = left_node
         self.op_tok = op_tok
         self.right_node = right_node
@@ -142,7 +142,8 @@ class bin0p_node:
 class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
-        self.tok_idx = 1
+        self.tok_idx = -1
+        self.current_tok = None
         self.advance()
     
     def advance(self):
@@ -152,8 +153,8 @@ class Parser:
         return self.current_tok
     
     def parse(self):
-        result = self.expr()
-        return result
+        res = self.expr()
+        return res
     
     def factor(self):
         tok = self.current_tok
@@ -169,12 +170,12 @@ class Parser:
         return self.bin_op(self.term, (TT_PLUS, TT_MINUS))
 
     def bin_op(self, func, ops):
-        left = self.factor()
+        left = func()
         
-        while self.current_tok.type in (TT_MUL, TT_DIV):
+        while self.current_tok.type in ops:
             op_tok = self.current_tok
             self.advance()
-            right = self.factor()
+            right = func()
             left = bin0p_node(left, op_tok, right)
 
         return left
