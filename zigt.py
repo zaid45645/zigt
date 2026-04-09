@@ -268,6 +268,25 @@ class Parser:
         return res.success(left)
     
 
+class rt_result: 
+    def __init__(self):
+        self.value = None
+        self.error = None
+
+    def register(self, res):
+        if res.error: 
+            self.error = res.error
+        return res.value
+    
+    def success(self, value):
+        self.error = None
+        self.value = value 
+        return self
+    
+    def failure(self, error):
+        self.error = error
+        return self
+
 class Number:
     def __init__(self, value):
         self.value = value
@@ -282,21 +301,21 @@ class Number:
     
     def added_to(self, other):
         if isinstance(other, Number):
-            return Number(self.value + other.value) 
+            return Number(self.value + other.value), None
     
     def subbed_by(self, other):
         if isinstance(other, Number):
-            return Number(self.value - other.value) 
+            return Number(self.value - other.value), None
         
     def multi_by(self, other):
         if isinstance(other, Number):
-            return Number(self.value * other.value)
+            return Number(self.value * other.value), None
          
     def divided_by(self, other):
         if isinstance(other, Number):
-            return Number(self.value / other.value) 
-        
-    
+            if other.value == 0:
+                return None, rt_error(other.pos_start, other.pos_end, "division by zero")
+            return Number(self.value / other.value), None
 
 class Interpreter():
     def visit(self, node):
@@ -309,31 +328,47 @@ class Interpreter():
     
 
     def visit_number_node(self, node):
-        return Number(node.tok.value).set_pos(node.pos_start, node.pos_end)
+        return rt_result().success(Number(node.tok.value).set_pos(node.pos_start, node.pos_end))
 
     def visit_bin0p_node(self, node):
-        left =  self.visit(node.left_node)
-        right = self.visit(node.right_node)
+        res = rt_result()
+        left =  res.register(self.visit(node.left_node))
+        if res.error:
+            return res
+        right = res.register(self.visit(node.right_node))
+        if res.error:
+            return res
 
         if node.op_tok.type == TT_PLUS:
-            result = left.added_to(right)
+            result, error = left.added_to(right)
         elif node.op_tok.type == TT_MINUS:
-            result = left.subbed_by(right)
+            result, error = left.subbed_by(right)
         elif node.op_tok.type == TT_MUL:
-            result = left.multi_by(right) 
+            result, error = left.multi_by(right) 
         elif node.op_tok.type == TT_DIV:
-            result = left.divided_by(right)   
+            result, error = left.divided_by(right)   
 
-        return result.set_pos(node.pos_start, node.pos_end)
+        if error:
+            return res.failure(error)
+        else:
+            return res.success(result.set_pos(node.pos_start, node.pos_end))
 
         
     
     def visit_unary0p_node(self, node):
-        number = self.visit(node.node)
+        res = rt_result()
+        number = res.register(self.visit(node.node))
+        if res.error:
+            return res
+        error = None
         if node.op_tok.type == TT_MINUS:
             number = number.multi_by(Number(-1))
 
-        return number.set_pos(node.pos_start, node.pos_end)
+        if error:
+            return res.failure(res)
+        else:
+            return res.success(number.set_pos(node.pos_start, node.pos_end))
+
 
 
 
@@ -351,5 +386,5 @@ def run(fn, text):
     interpreter = Interpreter()
     result = interpreter.visit(ast.node)
 
-    return result, None
+    return result.value, result.error
 
