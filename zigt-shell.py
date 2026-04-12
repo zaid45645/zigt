@@ -1,23 +1,32 @@
 import zigt
 from fido2.hid import CtapHidDevice
+import sys
 
 key = next(CtapHidDevice.list_devices(), None)
 
 def start():
     while True:
-        shell = input("zigt > ")
-        result, error = zigt.run('<stdin>', shell)
+        try:
+            shell = input("zigt > ")
+            if next(CtapHidDevice.list_devices(), None) is None:
+                print("\nsession terminated >:(")
+                break
 
-        if error:
-            print(error.as_string())
-        else:
-            print(result)
+            result, error = zigt.run('<stdin>', shell)
 
-if key:
-    start()
-else:
-    print("access denied :(")
-    exit()
+            if error:
+                print(error.as_string())
+            else:
+                print(result)
+        except (EOFError, KeyboardInterrupt):
+            break
+
+if __name__ == "__main__":
+    if key:
+        start()
+    else:
+        print("access denied :(")
+        sys.exit(1)
 
 
 
