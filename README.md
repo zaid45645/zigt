@@ -1,6 +1,6 @@
 zigt$: hello world! :3
 
-zigt is basically a low-level custom built programming lanugauge that right now is ONLY capable of doing quick arthematical operations that also obey the laws of the expression
+zigt is basically a low-level custom built programming lanugauge that right now is ONLY capable of doing quick arithmetical operations that also obey the laws of the expression
 hierarchy. The interpreter, parser and lexer were built from scratch through the help of the python programming language. 
 
 the unique but useless feature of zigt is that the shell can only be accessed ONLY if there is a security key plugged into your computer that is also recognised by FIDO2. the shell
