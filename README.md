@@ -8,9 +8,9 @@ will keep running unless and until the security key is still plugged into the co
 makes my project look cool! :D
 
 demo zgit <3 (linux only :3)
-<li>
-  <ul>download the binary file from the "releases" tab on the left</ul>
-  <ul>open the terminal in the direcotry of the binary file</ul>
-  <ul>plug in your security key!</ul>
-  <ul>run `./zigt` in the terminal and enjoy!</ul>
-</li>
+<ul>
+  <li>download the binary file from the "releases" tab on the left</ul>
+  <li>open the terminal in the direcotry of the binary file</ul>
+  <li>plug in your security key!</ul>
+  <li>run `./zigt` in the terminal and enjoy!</ul>
+</ul>
