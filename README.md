@@ -9,8 +9,8 @@ makes my project look cool! :D
 
 demo zgit <3 (linux only :3)
 <ul>
-  <li>download the binary file from the "releases" tab on the left</ul>
-  <li>open the terminal in the direcotry of the binary file</ul>
-  <li>plug in your security key!</ul>
-  <li>run `./zigt` in the terminal and enjoy!</ul>
+  <li>download the binary file from the "releases" tab on the left</li>
+  <li>open the terminal in the direcotry of the binary file</li>
+  <li>plug in your security key!</li>
+  <li>run `./zigt` in the terminal and enjoy!</li>
 </ul>
