@@ -1,8 +1,4 @@
-
-<video width="600" controls>
-  <source src="https://user-cdn.hackclub-assets.com/019e044b-a410-79fb-b58c-9e1fb7fcdee2/screencast_from_2026-05-08_02-41-15.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+[Screencast from 2026-05-08 02-41-15.webm](https://github.com/user-attachments/assets/140aa9e1-68e1-473f-97c2-227597385705)
 
 zigt$: hello world! :3
 
