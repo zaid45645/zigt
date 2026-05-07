@@ -7,7 +7,7 @@ the unique but useless feature of zigt is that the shell can only be accessed ON
 will keep running unless and until the security key is still plugged into the computer. this feature was a ton of fun to play with and even though it was completely useless, it still 
 makes my project look cool! :D
 
-<video width="640" height="360" controls>
+<video width="600" controls>
   <source src="https://cdn.hackclub.com/019e044b-a410-79fb-b58c-9e1fb7fcdee2/screencast_from_2026-05-08_02-41-15.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
