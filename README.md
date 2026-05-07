@@ -1,4 +1,4 @@
-[Screencast from 2026-05-08 02-41-15.webm](https://github.com/user-attachments/assets/140aa9e1-68e1-473f-97c2-227597385705)
+[zigt.webm](https://github.com/user-attachments/assets/40fc99ac-ae83-44e9-b6e7-f5ad02106d0d)
 
 zigt$: hello world! :3
 
