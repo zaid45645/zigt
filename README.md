@@ -8,7 +8,7 @@ will keep running unless and until the security key is still plugged into the co
 makes my project look cool! :D
 
 <video width="600" controls>
-  <source src="https://cdn.hackclub.com/019e044b-a410-79fb-b58c-9e1fb7fcdee2/screencast_from_2026-05-08_02-41-15.webm" type="video/webm">
+  <source src="https://user-cdn.hackclub-assets.com/019e044b-a410-79fb-b58c-9e1fb7fcdee2/screencast_from_2026-05-08_02-41-15.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
