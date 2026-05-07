@@ -13,7 +13,7 @@ the unique but useless feature of zigt is that the shell can only be accessed ON
 will keep running unless and until the security key is still plugged into the computer. this feature was a ton of fun to play with and even though it was completely useless, it still 
 makes my project look cool! :D
 
-demo zgit <3 (linux only :3)
+demo zigt <3 (linux only :3)
 <ul>
   <li>download the binary file from the "releases" tab on the left</li>
   <li>open the terminal in the direcotry of the binary file</li>
